@@ -12,6 +12,7 @@ import Navbar from './components/Navbar/Navbar';
 function App() {
     // eslint-disable-next-line 
     // const navigate = useNavigate();
+    // 
 
   return (
     <>
