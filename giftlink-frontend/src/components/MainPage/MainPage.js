@@ -7,8 +7,6 @@ function MainPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Task 1: Write async fetch operation
-        // Write your code below this line
                 // fetch all gifts
         const fetchGifts = async () => {
             try {
@@ -28,15 +26,14 @@ function MainPage() {
         fetchGifts();
     }, []);
 
-    // Task 2: Navigate to details page
+    //  Navigate to details page
     const goToDetailsPage = (productId) => {
-        // Write your code below this line
+      
            navigate(`/app/product/${productId}`);
       };
 
-    // Task 3: Format timestamp
+    // Format timestamp
     const formatDate = (timestamp) => {
-        // Write your code below this line
         const date = new Date(timestamp * 1000);
         return date.toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric' });
       };
@@ -53,7 +50,7 @@ function MainPage() {
                         <div className="card product-card">
 
                             {/* // Task 4: Display gift image or placeholder */}
-                            {/* // Write your code below this line */}
+                            {}
                               <div className="image-placeholder">
                                  {gift.image ? (
                                       <img src={gift.image} alt={gift.name} className="card-img-top" />
@@ -72,7 +69,7 @@ function MainPage() {
                                 {gift.condition}
                                 </p>
 
-                                {/* // Task 6: Display gift image or placeholder */}
+                                {/* //  Display gift image or placeholder */}
                                 {/* // Write your code below this line */}
                                 <p className="card-text">{formatDate(gift.date_added)}</p>
                                 
