@@ -1,168 +1,169 @@
-# 🎁 GiftLink - Gift Sharing Web Application
+# 🎁 GiftLink – Fullstack Gift Sharing Web Application
+sharegiftweb is a fullstack gift-sharing web application that allows users to share, browse, and search for gifts based on specific filters like name, age range, category, and condition. It promotes a culture of giving and reuse.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Node.js](https://img.shields.io/badge/Backend-Node.js-blue.svg)](https://nodejs.org/)
-[![MongoDB](https://img.shields.io/badge/Database-MongoDB-green.svg)](https://www.mongodb.com/)
-[![React](https://img.shields.io/badge/Frontend-React-blue.svg)](https://reactjs.org/)
-[![Deployed on IBM Cloud](https://img.shields.io/badge/Deployed-IBM%20Cloud-blue)](https://giftwebsite.1wa78gnru4vq.us-south.codeengine.appdomain.cloud)
+The application is fully containerized using Docker and deployed to [Render](https://render.com). It consists of a React frontend and a Node.js/Express backend connected to MongoDB Atlas.
 
 ---
 
-## 📌 Project Overview
+## 📸 Live Demo
 
-**GiftLink** is a fullstack JavaScript web application that allows users to share and discover gifts. Users can register, post gifts, and search for gifts by name, category, condition, or age range. It is built using modern technologies like **React**, **Node.js**, and **MongoDB**, and is deployed on IBM Cloud using Docker and Code Engine.
+- **Frontend:** [https://sharegiftweb.onrender.com](https://sharegiftweb.onrender.com)
+- **Backend API:** [https://sharegift-backend.onrender.com/api/gifts](https://sharegift-backend.onrender.com/api/gifts)
+
+---
+
+## 📌 Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [API Endpoints](#api-endpoints)
+- [Docker Reference](#docker-reference)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
 ## ✨ Features
 
-- 👤 User registration
-- 🎁 Add and manage gift listings
-- 🔍 Filter gifts by:
-  - Name (case-insensitive partial match)
-  - Category (e.g., toys, books)
-  - Condition (e.g., new, used)
-  - Age range (via slider)
-- 🔐 RESTful API with secure data handling
-- 🌐 Fully containerized and deployed to IBM Cloud
+- 🎁 Gift creation and listing
+- 🔍 Search/filter by name, age, category, and condition
+- ⚙️ RESTful API backend
+- 🌍 Cloud deployment using Render
+- 🐳 Fully Dockerized (Frontend + Backend)
+- 🌐 Uses MongoDB Atlas for cloud data storage
 
 ---
 
-## 🛠 Tech Stack
+## 🛠️ Tech Stack
 
-| Layer         | Technology                          |
-|---------------|--------------------------------------|
-| Frontend      | React, HTML, CSS, JavaScript         |
-| Backend       | Node.js, Express.js                  |
-| Database      | MongoDB                              |
-| API           | RESTful endpoints                    |
-| Containerization | Docker                           |
-| Cloud Deployment | IBM Cloud, IBM Code Engine       |
+| Area         | Technology                        |
+|--------------|------------------------------------|
+| Frontend     | React, HTML, CSS, JavaScript       |
+| Backend      | Node.js, Express.js                |
+| Database     | MongoDB Atlas                      |
+| Deployment   | Render (Frontend + Backend)        |
+| Containerization | Docker, Docker Compose         |
+| Version Control | Git & GitHub                    |
 
 ---
 
-## 🚀 Setup Instructions
-
-### Prerequisites
-
-- Node.js & npm installed
-- MongoDB instance (local or cloud)
-- Docker (for containerized build)
-- IBM Cloud CLI (for deployment)
-
-### Backend Setup
+## 📁 Project Structure
 
 ```bash
-git clone https://github.com/your-username/giftlink.git
-cd giftlink-backend
-npm install
-npm start
+Fullstack-capstone-project/
+│
+├── giftlink-frontend/       # React frontend
+│   ├── public/
+│   ├── src/
+│   └── Dockerfile
+│
+├── giftlink-backend/        # Express backend
+│   ├── routes/
+│   ├── models/
+│   ├── util/
+│   └── Dockerfile
+│
+├── docker-compose.yml
+└── README.md
 
 
-📘 Usage Guide
-Open the React frontend interface.
+⚙️ Getting Started
+Prerequisites
+Node.js & npm
 
-Register as a new user.
+Docker & Docker Compose
 
-Add a new gift with name, category, condition, and age suitability.
-
-Use the search bar and filters to find available gifts.
-
-📡 API Endpoints
-GET /api/search
-Query gifts by filters.
-
-Example Request:
-
-sql
+Clone the Repository
+bash
 Copy
 Edit
-GET /api/search?name=lego&age_years=8&category=toys&condition=new
-Query Parameters:
+git clone https://github.com/yourusername/giftlink.git
+cd giftlink
+Run Locally with Docker
+bash
+Copy
+Edit
+docker-compose up --build
+Frontend: http://localhost:3000
 
-name (optional)
+Backend: http://localhost:3060/api/gifts
 
-age_years (optional, slider-based)
+📡 API Endpoints
+Base URL: https://giftlink-backend.onrender.com/api/gifts
 
-category (optional)
+Method	Endpoint	Description
+GET	/api/gifts	Fetch all gifts
+POST	/api/gifts	Create a new gift
+GET	/api/gifts/:id	Fetch gift by ID
+DELETE	/api/gifts/:id	Delete a gift
 
-condition (optional)
-
-Example Response:
+Sample POST Request:
 
 json
 Copy
 Edit
-[
-  {
-    "name": "Lego Set",
-    "age_years": 8,
-    "category": "toys",
-    "condition": "new"
-  }
-]
+{
+  "name": "Teddy Bear",
+  "ageRange": "3-6",
+  "category": "Toys",
+  "condition": "New"
+}
 🐳 Docker Reference
-Dockerfile (Backend or Fullstack Container)
-Dockerfile
-Copy
-Edit
-# Use Node.js base image
-FROM node:20
+To run only the backend:
 
-# Create app directory
-WORKDIR /app
-
-# Install dependencies
-COPY package*.json ./
-RUN npm install
-
-# Copy app files
-COPY . .
-
-# Expose port
-EXPOSE 3060
-
-# Start the app
-CMD ["node", "app.js"]
-Docker Commands
 bash
 Copy
 Edit
-# Build the image
-docker build -t giftapp .
+cd giftlink-backend
+docker build -t giftlink-backend .
+docker run -p 3060:3060 giftlink-backend
+To run only the frontend:
 
-# Tag the image for IBM Cloud Container Registry
-docker tag giftapp us.icr.io/sn-labs-ezegeorgechu/giftapp
+bash
+Copy
+Edit
+cd giftlink-frontend
+docker build -t giftlink-frontend .
+docker run -p 3000:3000 giftlink-frontend
+To run both with Docker Compose:
 
-# Push to IBM Cloud
-docker push us.icr.io/sn-labs-ezegeorgechu/giftapp
-☁️ Deployment to IBM Cloud
-Log in to IBM Cloud CLI
+bash
+Copy
+Edit
+docker-compose up --build
+🚀 Deployment
+Both frontend and backend are deployed using Render:
 
-Create a Code Engine project
+Backend uses the Express Dockerfile inside giftlink-backend/
 
-Deploy using the pushed Docker image
+Frontend uses the React Dockerfile inside giftlink-frontend/
 
-Set environment variables and expose required ports
-
-Access your app via:
-https://giftwebsite.1wa78gnru4vq.us-south.codeengine.appdomain.cloud
+Ensure your REACT_APP_API_URL in the frontend points to your Render backend URL.
 
 🤝 Contributing
-Contributions are welcome! Please follow these steps:
+Contributions are welcome! Here’s how:
 
 Fork the repository
 
-Create a feature branch (git checkout -b feature-name)
+Create a new branch: git checkout -b feature/your-feature
 
-Commit your changes (git commit -m 'Add feature')
+Commit your changes: git commit -m "Add your feature"
 
-Push to the branch (git push origin feature-name)
+Push to the branch: git push origin feature/your-feature
 
 Open a Pull Request
 
 📄 License
 This project is licensed under the MIT License.
+See the LICENSE file for more details.
 
-🌍 Live Demo
-🔗 GiftLink App on IBM Cloud
+🙌 Acknowledgements
+IBM Full Stack JavaScript Capstone Project
+
+Render.com for free cloud hosting
+
+MongoDB Atlas for cloud database support
+
