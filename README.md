@@ -1,4 +1,8 @@
 # 🎁 GiftLink – Fullstack Gift Sharing Web Application
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Platform](https://img.shields.io/badge/platform-IBM%20Cloud%20%7C%20Render-blue.svg)
+![Dockerized](https://img.shields.io/badge/Docker-Supported-blue.svg)
+
 sharegiftweb is a fullstack gift-sharing web application that allows users to share, browse, and search for gifts based on specific filters like name, age range, category, and condition. It promotes a culture of giving and reuse.
 
 The application is fully containerized using Docker and deployed to [Render](https://render.com). It consists of a React frontend and a Node.js/Express backend connected to MongoDB Atlas.
@@ -27,14 +31,16 @@ The application is fully containerized using Docker and deployed to [Render](htt
 ---
 
 ## ✨ Features
-
 - 🎁 Gift creation and listing
-- 🔍 Search/filter by name, age, category, and condition
+- 🔍 Advanced search by name, age range, condition, and category
 - ⚙️ RESTful API backend
+- 🧑 User registration and management
 - 🌍 Cloud deployment using Render
-- 🐳 Fully Dockerized (Frontend + Backend)
+- 🧑 User registration and management
+- 🐳 Full Docker containerization (frontend + backend)
+- 🌐 CORS-enabled secure API
+- 🔄 Real-time data syncing from MongoDB Atlas
 - 🌐 Uses MongoDB Atlas for cloud data storage
-
 ---
 
 ## 🛠️ Tech Stack
@@ -47,7 +53,7 @@ The application is fully containerized using Docker and deployed to [Render](htt
 | Deployment   | Render (Frontend + Backend)        |
 | Containerization | Docker, Docker Compose         |
 | Version Control | Git & GitHub                    |
-
+| CICD            | GitHub Action                   |
 ---
 
 ## 📁 Project Structure
@@ -167,3 +173,5 @@ Render.com for free cloud hosting
 
 MongoDB Atlas for cloud database support
 
+👤 Author
+Built by Eze George
