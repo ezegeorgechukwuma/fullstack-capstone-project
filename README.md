@@ -163,7 +163,7 @@ Push to the branch: git push origin feature/your-feature
 Open a Pull Request
 
 📄 License
-This project is licensed under the MIT License.
+This project is licensed under the Apache License.
 See the LICENSE file for more details.
 
 🙌 Acknowledgements
